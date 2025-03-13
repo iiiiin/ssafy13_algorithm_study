@@ -15,9 +15,8 @@ def dfs(r, c, num):
     """
     for dr, dc in directions:
         nr, nc = r + dr, c + dc
-        if (
-            0 <= nr < N and 0 <= nc < N and not visited[nr][nc]
-        ):  # 보드 안이며 물에 잠기지 않았다면
+        # 보드 안이며 물에 잠기지 않았다면
+        if 0 <= nr < N and 0 <= nc < N and not visited[nr][nc]:
             if matrix[nr][nc] > num:  # 다음 위치가 물의 높이보다 높다면
                 visited[nr][nc] = 1  # 하나로 묶음
                 dfs(nr, nc, num)  # 다음 재귀 진행
@@ -33,7 +32,7 @@ for _ in range(N):
     matrix.append(arr)
 
     for c in arr:
-        max_height = max(c, max_height)
+        max_height = max(c, max_height)  # 최대 높이 설정
 
 for i in range(1, max_height):
     visited = [[0 for _ in range(N)] for _ in range(N)]
@@ -41,9 +40,8 @@ for i in range(1, max_height):
 
     for r in range(N):
         for c in range(N):
-            if (
-                matrix[r][c] > i and not visited[r][c]
-            ):  # 물의 높이보다 높으며 그룹이 아니라면
+            # 물의 높이보다 높으며 그룹이 아니라면
+            if matrix[r][c] > i and not visited[r][c]:
                 cnt += 1  # 영역 수 증가
                 visited[r][c] = 1  # 방문
                 dfs(r, c, i)
