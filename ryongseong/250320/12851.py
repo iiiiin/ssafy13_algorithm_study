@@ -1,7 +1,6 @@
-import sys
 from collections import deque
 
-N, K = map(int, sys.stdin.readline().strip().split())
+N, K = map(int, input().split())
 
 visited = [0] * 100001
 cnt = 0
