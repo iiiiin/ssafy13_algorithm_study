@@ -21,6 +21,7 @@ def bfs(s):
         for next in adj_list[now]:
             if visited[next] == -1:
                 q.append(next)
+                # 방문 리스트로 이동 경로의 깊이 저장
                 visited[next] = visited[now] + 1
 
     # 완전히 탐색했을 때의 방문 Lv. 반환
@@ -37,6 +38,7 @@ while True:
     a, b = map(int, input().split())
     if a == -1 and b == -1:
         break
+    # 좌표를 입력받고 인접 리스트에 저장
     # 무방향 그래프
     adj_list[a].append(b)
     adj_list[b].append(a)
@@ -52,6 +54,7 @@ min_score = min([x[1] for x in candidates])
 entry = [x[0] for x in candidates if x[1] == min_score]
 
 print(min_score, len(entry))
+# 오름차순 출력
 print(*sorted(entry))
 
 
